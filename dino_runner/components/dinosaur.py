@@ -6,7 +6,7 @@ class Dinosaur(Sprite):
     POS_X = 80
     POS_Y = 310
     POS_Y_DUCKING = 340
-    JUMP_VEL = 7
+    JUMP_VEL = 8.5
 
     def __init__(self):
         self.image = RUNNING[0]
@@ -28,6 +28,7 @@ class Dinosaur(Sprite):
         if self.dino_run:
             self.run()
         
+       
         if user_input[pygame.K_DOWN] and not self.dino_jump:
             self.dino_run = False
             self.dino_duck = True
