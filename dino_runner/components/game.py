@@ -6,6 +6,7 @@ from dino_runner.components.dinosaur import Dinosaur
 
 from dino_runner.components.obstacles.obstacle_manager_1 import ObstacleManager
 
+from dino_runner.components.power_ups.power_up_manager import PowerUpManager
 
 class Game:
     def __init__(self):
@@ -18,11 +19,11 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
-
+        self.points = 0
 
         self.player = Dinosaur()
         self.obstacle_manager_1 = ObstacleManager()
-
+        self.power_up_manager = PowerUpManager()
 
     def run(self):
         # Game loop: events - update - draw
@@ -42,6 +43,8 @@ class Game:
         user_input = pygame.key.get_pressed()
         self.player.update(user_input)
         self.obstacle_manager_1.update(self.game_speed, self)
+        self.power_up_manager.update(self.points, self.game_speed, self.player)
+        self.points += 1
 
     def draw(self):
         self.clock.tick(FPS)
@@ -49,6 +52,7 @@ class Game:
         self.draw_background()
         self.player.draw(self.screen)
         self.obstacle_manager_1.draw(self.screen)
+        self.power_up_manager.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 
