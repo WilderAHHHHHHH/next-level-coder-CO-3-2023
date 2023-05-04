@@ -20,6 +20,7 @@ class ObstacleManager:
 
             if type == 0:
                 self.obstacles.append(Bird(BIRD))
+                
             elif type == 1:
                 self.obstacles.append(Cactus(SMALL_CACTUS))
             elif type == 2:
@@ -38,7 +39,7 @@ class ObstacleManager:
                     game.playing = False
                     break
                 else:
-                    self.obstacles.remove(obstacle) ## with shield
+                    self.obstacles.remove(obstacle)
 
 
     def draw(self, screen):

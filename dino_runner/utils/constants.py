@@ -2,14 +2,16 @@ import pygame
 import os
 
 # Global Constants
-TITLE = "Chrome Dino Runner"
+TITLE = "Chrome Dino Runner Will"
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100
 FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
-FONT_ARIAL = pygame.font.match_font("arial")
+FONT_ARIAL = pygame.font.match_font("freesansbold.ttf")
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+
+
 
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
@@ -18,12 +20,12 @@ RUNNING = [
 
 RUNNING_SHIELD = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Shield.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2Shield.png")),
 ]
 
 RUNNING_HAMMER = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Hammer.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Hammer.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2Hammer1.png")),
 ]
 
 JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJump.png"))
@@ -37,12 +39,12 @@ DUCKING = [
 
 DUCKING_SHIELD = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Shield.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2Shield.png")),
 ]
 
 DUCKING_HAMMER = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Hammer.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2Hammer.png")),
 ]
 
 SMALL_CACTUS = [
@@ -60,7 +62,6 @@ BIRD = [
     pygame.image.load(os.path.join(IMG_DIR, "Bird/Bird1.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Bird/Bird2.png")),
 ]
-
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
@@ -72,4 +73,7 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
 HAMMER_TYPE = "hammer"
+BURGER_TYPE = "burger"
 
+BURGER = pygame.image.load(os.path.join(IMG_DIR, 'Other/Burger.png'))
+#MUSICA_BACK = pygame.mixer.Sound(os.path.join(IMG_DIR, 'Sound/SuperMario.wav'))

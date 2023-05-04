@@ -1,12 +1,13 @@
-# import pygame
-# import time
-# from pygame.sprite import Sprite
-# from dino_runner.utils.constants import MUSICA
+import pygame
 
-# class Music(Sprite):
-#     def __init__(self):
-#         pass
-#     def update(self):
-#         time.sleep(10)
-#         pygame.mixer.music.play(-1)
-#         pygame.mixer.music.set_volume(0.5)
+#from dino_runner.utils.constants import MUSICA_BACK
+
+
+class Music:
+    def __init__(self):
+        pass
+
+    def update(self):
+        pass
+        #MUSICA_BACK.play(-1)
+        

@@ -1,7 +1,5 @@
 
-
 from dino_runner.utils.constants import HEART
-
 
 class Heart:
     def __init__(self, pos_x, pos_y):
