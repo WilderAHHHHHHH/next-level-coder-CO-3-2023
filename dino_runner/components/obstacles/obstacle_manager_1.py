@@ -18,7 +18,6 @@ class ObstacleManager:
 
             type = random.randint(0,2)
 
-            
             if type == 0:
                 self.obstacles.append(Bird(BIRD))
             elif type == 1:
@@ -32,15 +31,25 @@ class ObstacleManager:
             obstacle.update(game_speed, self.obstacles)
 
             if game.player.dino_rect.colliderect(obstacle.rect):
-                pygame.time.delay(300)
-                game.playing = False
-                break
+                game.heart_manager.reduce_heart()
+
+                if not game.player.shield and game.heart_manager.heart_count < 1:
+                    pygame.time.delay(300)
+                    game.playing = False
+                    break
+                else:
+                    self.obstacles.remove(obstacle) ## with shield
+
 
     def draw(self, screen):
         for obstacle in self.obstacles:
             obstacle.draw(screen)
        
 
+## Explicacion
 
+#  mejoras, implementaciones...
+
+#  class 5 ejercices
 
 

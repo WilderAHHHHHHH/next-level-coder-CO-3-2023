@@ -1,12 +1,18 @@
 import pygame
+from dino_runner.components.player_hearts.heart_manager import HeartManager
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
+from dino_runner.components.power_ups.power_up_manager import PowerUpManager
+
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, FONT_ARIAL
 
 from dino_runner.components.dinosaur import Dinosaur
 
 from dino_runner.components.obstacles.obstacle_manager_1 import ObstacleManager
 
-from dino_runner.components.power_ups.power_up_manager import PowerUpManager
+
+
+
+# from dino_runner.components.music.music import Music
 
 class Game:
     def __init__(self):
@@ -20,10 +26,20 @@ class Game:
         self.x_pos_bg = 0
         self.y_pos_bg = 380
         self.points = 0
-
+        
+        
         self.player = Dinosaur()
         self.obstacle_manager_1 = ObstacleManager()
         self.power_up_manager = PowerUpManager()
+        self.heart_manager = HeartManager()
+       
+    def increas_score(self):
+        self.points += 1
+        if self.points % 100 == 0:
+            self.game_speed += 1
+    
+    
+        
 
     def run(self):
         # Game loop: events - update - draw
@@ -37,6 +53,7 @@ class Game:
     def events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                #self.musica.play()
                 self.playing = False
 
     def update(self):
@@ -44,7 +61,9 @@ class Game:
         self.player.update(user_input)
         self.obstacle_manager_1.update(self.game_speed, self)
         self.power_up_manager.update(self.points, self.game_speed, self.player)
-        self.points += 1
+        self.increas_score()
+       
+        
 
     def draw(self):
         self.clock.tick(FPS)
@@ -53,6 +72,8 @@ class Game:
         self.player.draw(self.screen)
         self.obstacle_manager_1.draw(self.screen)
         self.power_up_manager.draw(self.screen)
+        self.draw_score()
+        self.heart_manager.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 
@@ -65,7 +86,11 @@ class Game:
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
 ## --------------------------------------------------------------------------- ## 
-        # for i in range(60):
-        #     x = random.randint(0, 1100)
-        #     y = random.randint(0, 600)
-        #     pygame.draw.circle(self.screen, (90, 90, 90), (x, y), 5)
+    def draw_score(self):
+        font = pygame.font.Font(FONT_ARIAL, 30)
+        surface = font.render(str(self.points), True, (0,0,0))   
+        rect = surface.get_rect()
+        rect.x = 1000
+        rect.y = 10
+        self.screen.blit(surface, rect)         
+
